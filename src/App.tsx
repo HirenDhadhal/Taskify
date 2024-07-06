@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import Todo from './model';
 import InputFields from './components/InputFields';
+import TodoList from './components/TodoList';
 
 function App() {
   const [newTodo, setNewTodo] = useState<string>('');
@@ -13,16 +14,15 @@ function App() {
     setNewTodo('');
   };
   return (
-    <>
+    <div className='App'>
+      <span className='heading'>Taskify</span>
       <InputFields
         newTodo={newTodo}
         setNewTodo={setNewTodo}
         handleAdd={handleAdd}
       />
-      {Todos.map((t) => (
-        <li key={t.id}>{t.todo}</li>
-      ))}
-    </>
+      <TodoList Todos={Todos} setTodos={setTodos} />
+    </div>
   );
 }
 
